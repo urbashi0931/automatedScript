@@ -18,9 +18,15 @@ namespace HospitalManagementAutomation
                 driver.Navigate().GoToUrl("https://staging-scweb.arcapps.org/");
 
                 // Step 2: Login
-                driver.FindElement(By.XPath("//input[@placeholder='Enter Your Username']")).SendKeys("tester");
-                driver.FindElement(By.Name("password")).SendKeys("tester2023!");
-                driver.FindElement(By.XPath("//*[@id=\"root\"]/div[2]/div[2]/div/div/div[3]/form/div/div[4]/button")).Click();
+ IWebElement usernameInput = driver.FindElement(By.XPath("//input[@name='username']"));
+ usernameInput.SendKeys("tester");
+
+ IWebElement passwordInput = driver.FindElement(By.XPath("//input[@type='password' and @name='password']"));
+ passwordInput.SendKeys("tester2023!");
+
+ IWebElement signInButton = driver.FindElement(By.XPath("//button[@type='submit' and contains(@class, 'button') and text()='Sign In']"));
+ signInButton.Click();
+
 
                 //Step 3: option selection page
 
